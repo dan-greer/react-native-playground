@@ -1,17 +1,11 @@
 import {View, Text, StyleSheet, Pressable, Alert} from 'react-native';
 
-export default Item = ({title}) => {
-
-    const onPressCallback = () => {
-        Alert.alert("You pressed an item!",
-         "The item you pressed: " + title
-         );
-    }
+export default Item = (props) => {
 
     return (
-        <Pressable onPress={onPressCallback}>
+        <Pressable onPress={event => props.onPressCallback(props)}>
             <View style={styles.item}>
-                <Text>{title}</Text>
+                <Text>{props.title}</Text>
             </View>
         </Pressable>
     );
