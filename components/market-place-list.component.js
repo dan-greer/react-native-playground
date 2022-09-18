@@ -2,17 +2,26 @@ import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, View} from 'react-native';
 import Item from './item.component';
 import DATA from '../shared/statics';
-import getMarketplaceDataApi from '../service/marketplace.service';
+import getMarketplaceData from '../service/marketplace.service';
 
 export default MarketPlaceList = () => {
     const [isLoading, setIsLoading] = useState(true);
     const [data, setData] = useState([]);
 
-    fetch('http://localhost:3000/marketplace')
-
     useEffect(() => {
-        setData(getMarketplaceDataApi())
+        loadMarketplaceData();
     }, []);
+
+    const loadMarketplaceData = () => {
+        getMarketplaceData()
+        .then((response) => {
+            setData(response.data.body);
+            setIsLoading(false);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
     
     const renderItem = ({item}) => {
         return <Item title={item.title}/>
