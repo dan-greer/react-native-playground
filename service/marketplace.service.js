@@ -1,10 +1,12 @@
-export default getMarketplaceDataApi = () => {
-    return fetch('http://localhost:3000/marketplace')
-        .then((res) => res.json())
-        .then((json) => {
-            return json;
-        })
-        .catch((error) => {
-            console.error(error);
-        }) ;
+import axios from 'axios';
+const marketplaceUrl = 'https://ednk3d0e5i.execute-api.us-east-2.amazonaws.com/prod';
+
+
+
+const getMarketplaceDataApi = () => {
+    return axios.get(`${marketplaceUrl}`);
+}
+
+export default getMarketpalceData = () => {
+    return getMarketplaceDataApi();
 }
