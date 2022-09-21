@@ -1,5 +1,5 @@
 import { Alert } from 'react-native';
-import AuthorizationScreen from '../../screens/auth/auth.screen';
+import AuthenticationScreen from '../../screens/auth/auth.screen';
 
 export default Auth = (props) => {
 
@@ -12,6 +12,6 @@ export default Auth = (props) => {
     }
 
     return(
-        <AuthorizationScreen logUserInCallback = {logUserIn}/>
+        <AuthenticationScreen logUserInCallback = {logUserIn}/>
     );
 }

@@ -1,9 +1,9 @@
-import { View, TextInput, Button, Image, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Pressable, Image, Text, StyleSheet } from 'react-native';
 import { useState } from 'react';
 
-export default AuthorizationScreen = (props) => {
-    const [username, setUsername] = useState('Enter your username');
-    const [password, setPassword] = useState('Enter your password');
+export default AuthenticationScreen = (props) => {
+    const [username, setUsername] = useState('');
+    const [password, setPassword] = useState('');
 
     const onLoginPressed = () => {
         props.logUserInCallback(username, password);
@@ -12,8 +12,8 @@ export default AuthorizationScreen = (props) => {
 
     return(
         <View style={styles.container}>
-            <Text>It's not delivery...</Text>
-            <Image source={require('./img/logo.jpg')}/>
+            <Text style={styles.headerText}>Delivery</Text>
+            <Text style={styles.labelText}>Username</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={setUsername}
@@ -23,6 +23,7 @@ export default AuthorizationScreen = (props) => {
                 textContentType={'username'}
                 autoCapitalize={false}
             />
+            <Text style={styles.labelText}>Password</Text>
             <TextInput
                 style={styles.input}
                 onChangeText={setPassword}
@@ -32,29 +33,57 @@ export default AuthorizationScreen = (props) => {
                 textContentType={'password'}
                 secureTextEntry={true}
             />
-            <Button
-                title="Log in"
+            <Pressable
                 onPress={onLoginPressed}
-                style={styles.button}
-            />
+                style={styles.button}>
+                    <Text style={styles.loginText}>Log in</Text>
+            </Pressable>
         </View>
     );
 }
 
 const styles = StyleSheet.create({
     input: {
-        height: 80,
-        width: 240,
+        height: 60,
+        width: 260,
         margin: 12,
         borderWidth: 1,
-        padding: 10
+        padding: 15,
+        borderWidth: 1,
+        borderRadius: 15,
+        color: '#162521'
     },
     button: {
-        flex: 2
-    },
-    container: {
-        flex: 1,
         alignItems: 'center',
         justifyContent: 'center',
-      }
+        borderRadius: 4,
+        backgroundColor: '#162521',
+        paddingVertical: 12,
+        paddingHorizontal: 32
+    },
+    loginText: {
+        fontSize: 16,
+        fontWeight: 'bold',
+        color: 'white'
+    },
+    headerText: {
+        fontWeight: 'bold',
+        fontSize: 28,
+        color: '#162521',
+        marginBottom: 15
+    },
+    labelText: {
+        color: '#162521',
+
+    },
+    container: {
+        alignItems: 'center',
+        justifyContent: 'center',
+        backgroundColor:'#C0E0DE',
+        borderWidth: 5,
+        borderRadius: 15,
+        borderColor: 'white',
+        paddingVertical: 35,
+        paddingHorizontal: 15
+    }
 });
