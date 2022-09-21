@@ -1,29 +1,27 @@
-import { View, TextInput, Alert, Button, StyleSheet, Image } from 'react-native';
-import {useState} from 'react'
+import { View, TextInput, Button, Image, Text, StyleSheet } from 'react-native';
+import { useState } from 'react';
 
-export default Login = ({navigation}) => {
-    const [userName, setUserName] = useState('Enter user name');
-    const [password, setPassword] = useState('Enter password');
+export default AuthorizationScreen = (props) => {
+    const [username, setUsername] = useState('Enter your username');
+    const [password, setPassword] = useState('Enter your password');
 
-    const logUserIn = () => {
-        if (userName === 'test-username' && password === 'test-password') {
-            navigation.navigate('Marketplace');
-        } else {
-            Alert.alert('Incorrect username or password!');
-        }
-
+    const onLoginPressed = () => {
+        props.logUserInCallback(username, password);
     }
+
 
     return(
         <View style={styles.container}>
+            <Text>It's not delivery...</Text>
             <Image source={require('./img/logo.jpg')}/>
             <TextInput
                 style={styles.input}
-                onChangeText={setUserName}
-                value={userName}
+                onChangeText={setUsername}
+                value={username}
                 autoCorrect={false}
                 clearTextOnFocus={true}
                 textContentType={'username'}
+                autoCapitalize={false}
             />
             <TextInput
                 style={styles.input}
@@ -36,7 +34,7 @@ export default Login = ({navigation}) => {
             />
             <Button
                 title="Log in"
-                onPress={logUserIn}
+                onPress={onLoginPressed}
                 style={styles.button}
             />
         </View>
