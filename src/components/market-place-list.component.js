@@ -1,39 +1,27 @@
 import React, {useEffect, useState} from 'react';
-import {ActivityIndicator, FlatList, View} from 'react-native';
+import {ActivityIndicator, FlatList, View, StyleSheet} from 'react-native';
 import Item from './item.component';
 import getMarketplaceData from '../services/marketplace.service';
+import Container from './container.component';
 
 export default MarketPlaceList = ({navigation}) => {
     const [isLoading, setIsLoading] = useState(false);
-    const [data, setData] = useState([
-        {
-            id: '123',
-            title: 'First Item'
-        }, 
-        {
-            id: '456',
-            title: 'Second Item'
-        }, 
-        {
-            id: '789',
-            title: 'Third Item'
-        }
-    ]);
+    const [data, setData] = useState([]);
 
-    // useEffect(() => {
-    //     loadMarketplaceData();
-    // }, []);
+    useEffect(() => {
+        loadMarketplaceData();
+    }, []);
 
-    // const loadMarketplaceData = () => {
-    //     getMarketplaceData()
-    //     .then((response) => {
-    //         setData(response.data.body);
-    //         setIsLoading(false);
-    //     })
-    //     .catch((error) => {
-    //         console.log(error);
-    //     });
-    // }
+    const loadMarketplaceData = () => {
+        getMarketplaceData()
+        .then((response) => {
+            setData(response.data.body);
+            setIsLoading(false);
+        })
+        .catch((error) => {
+            console.log(error);
+        });
+    }
 
     
     const onPressCallback = (item) => {
@@ -46,7 +34,7 @@ export default MarketPlaceList = ({navigation}) => {
     }
     
     return (
-        <View>
+        <View style={styles.container}>
             { isLoading ? 
                 <ActivityIndicator/> : 
                 <FlatList
@@ -55,6 +43,16 @@ export default MarketPlaceList = ({navigation}) => {
                 keyExtractor={item => item.id}/>
             }
         </View>
-
     )
 }
+
+const styles = StyleSheet.create({
+    container: {
+        flex: 1,
+        backgroundColor:'#C0E0DE',
+        borderWidth: 5,
+        borderRadius: 15,
+        borderColor: 'white',
+        marginVertical: 35
+    }
+});
