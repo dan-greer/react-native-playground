@@ -1,7 +1,7 @@
 import React, {useEffect, useState} from 'react';
 import {ActivityIndicator, FlatList, View} from 'react-native';
 import Item from './item.component';
-import getMarketplaceData from '../service/marketplace.service';
+import getMarketplaceData from '../services/marketplace.service';
 
 export default MarketPlaceList = ({navigation}) => {
     const [isLoading, setIsLoading] = useState(false);
@@ -38,7 +38,7 @@ export default MarketPlaceList = ({navigation}) => {
     
     const onPressCallback = (item) => {
         console.log(item);
-        navigation.navigate('Item View', {item: item});
+        navigation.navigate('SingleItem', {item: item});
     }
     
     const renderItem = ({item}) => {

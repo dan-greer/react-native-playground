@@ -1,44 +1,54 @@
-import { View, TextInput, Pressable, Image, Text, StyleSheet } from 'react-native';
+import { View, TextInput, Pressable, Alert, Text, StyleSheet } from 'react-native';
 import { useState } from 'react';
+import Container from '../../components/container.component';
 
-export default AuthenticationScreen = (props) => {
+export default AuthenticationScreen = ({ navigation }) => {
     const [username, setUsername] = useState('');
     const [password, setPassword] = useState('');
 
     const onLoginPressed = () => {
-        props.logUserInCallback(username, password);
+        // log the user in, navigate to next screen
+        // if unable to log in, display error message
+
+        if (username === 'test-username' && password === 'test-password') {
+            navigation.navigate('Home');
+        } else {
+            Alert.alert('Invalid username or password!');
+        }
     }
 
 
     return(
-        <View style={styles.container}>
-            <Text style={styles.headerText}>Delivery</Text>
-            <Text style={styles.labelText}>Username</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={setUsername}
-                value={username}
-                autoCorrect={false}
-                clearTextOnFocus={true}
-                textContentType={'username'}
-                autoCapitalize={false}
-            />
-            <Text style={styles.labelText}>Password</Text>
-            <TextInput
-                style={styles.input}
-                onChangeText={setPassword}
-                value={password}
-                autoCorrect={false}
-                clearTextOnFocus={true}
-                textContentType={'password'}
-                secureTextEntry={true}
-            />
-            <Pressable
-                onPress={onLoginPressed}
-                style={styles.button}>
-                    <Text style={styles.loginText}>Log in</Text>
-            </Pressable>
-        </View>
+        <Container>
+            <View style={styles.container}>
+                <Text style={styles.headerText}>Delivery</Text>
+                <Text style={styles.labelText}>Username</Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={setUsername}
+                    value={username}
+                    autoCorrect={false}
+                    clearTextOnFocus={true}
+                    textContentType={'username'}
+                    autoCapitalize={false}
+                />
+                <Text style={styles.labelText}>Password</Text>
+                <TextInput
+                    style={styles.input}
+                    onChangeText={setPassword}
+                    value={password}
+                    autoCorrect={false}
+                    clearTextOnFocus={true}
+                    textContentType={'password'}
+                    secureTextEntry={true}
+                />
+                <Pressable
+                    onPress={onLoginPressed}
+                    style={styles.button}>
+                        <Text style={styles.loginText}>Log in</Text>
+                </Pressable>
+            </View>
+        </Container>
     );
 }
 
