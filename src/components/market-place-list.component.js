@@ -4,7 +4,7 @@ import Item from './item.component';
 import getMarketplaceData from '../services/marketplace.service';
 import Container from './container.component';
 
-export default MarketPlaceList = ({navigation}) => {
+export default MarketPlaceList = (props) => {
     const [isLoading, setIsLoading] = useState(false);
     const [data, setData] = useState([]);
 
@@ -26,11 +26,11 @@ export default MarketPlaceList = ({navigation}) => {
     
     const onPressCallback = (item) => {
         console.log(item);
-        navigation.navigate('SingleItem', {item: item});
+        props.navigation.navigate('SingleItem', {item: item});
     }
     
     const renderItem = ({item}) => {
-        return <Item title={item.title} navigator={navigation} onPressCallback={onPressCallback}/>
+        return <Item title={item.title} onPressCallback={onPressCallback}/>
     }
     
     return (
