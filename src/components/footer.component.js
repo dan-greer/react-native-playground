@@ -15,20 +15,16 @@ export default Footer = (props) => {
 const styles = StyleSheet.create({
     container: {
         alignItems: 'center',
-        justifyContent: 'center',
-        marginBottom: 25,
-        borderWidth: 5,
-        borderColor: 'white',
-        borderRadius: 15
+        justifyContent: 'center'
     },
     sideways: {
-        flexDirection: 'row',
-        paddingHorizontal: 140,
-        paddingVertical: 15,
         alignItems: 'center',
         justifyContent: 'center',
-        borderRadius: 10,
+        borderRadius: 4,
         backgroundColor: '#162521',
+        paddingVertical: 12,
+        paddingHorizontal: 32,
+        flexDirection: 'row'
     },
     cartText: {
         fontSize: 16,

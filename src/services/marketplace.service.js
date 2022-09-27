@@ -10,15 +10,18 @@ const getMarketplaceDataApi = () => {
                 body: [
                     {
                         id: '123',
-                        title: 'First Item'
+                        title: 'Nails 100 ct',
+                        description: 'Bucket of 100 new roofing nails'
                     }, 
                     {
                         id: '456',
-                        title: 'Second Item'
+                        title: 'Shingles 50 ct',
+                        description: 'Pallet of 50 new shingles'
                     }, 
                     {
                         id: '789',
-                        title: 'Third Item'
+                        title: 'Roof Tar 5 gal',
+                        description: '5 gallon bucket of roofing tar'
                     }
                 ]
             }
