@@ -34,7 +34,7 @@ export default MarketPlaceList = (props) => {
     }
     
     return (
-        <View style={styles.container}>
+        <View>
             { isLoading ? 
                 <ActivityIndicator/> : 
                 <FlatList
@@ -45,14 +45,3 @@ export default MarketPlaceList = (props) => {
         </View>
     )
 }
-
-const styles = StyleSheet.create({
-    container: {
-        flex: 1,
-        backgroundColor:'#C0E0DE',
-        borderWidth: 5,
-        borderRadius: 15,
-        borderColor: 'white',
-        marginVertical: 35
-    }
-});
